@@ -1,0 +1,52 @@
+#include<bits/stdc++.h> 
+using namespace std;
+
+vector<int>find(vector<int>a,int n,int l,int r,vector<int>&v)
+{
+    set<int>ss;
+    
+    for(int i=0;i<n;i++)
+    {
+     ss.insert(a[i]);
+    }
+    for(int i=l;i<=r;i++)
+    {
+        // ss.find(i)==ss.end() means i ss set a nai 
+
+        if(ss.find(i)==ss.end())
+        {
+            v.push_back(i);
+            //cout<<i;
+        }
+    }
+    return v;
+   
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        vector<int>v;
+        vector<int>vp;
+        int n,s;
+        cin>>n;
+        cin>>s;
+      vector<int>a(n);
+        int i;
+        for(i=0;i<n;i++) cin>>a[i];
+         sort(a.begin(),a.end());
+        int l=a[0],r=a[n-1];
+       vp=find(a,n,l,r,v);
+   
+       
+         sort(vp.begin(),vp.end());
+          for(auto it: vp) 
+          {
+            cout<<it<<endl;
+          }
+          
+        
+    }
+}
