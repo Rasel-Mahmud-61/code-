@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+int findgcd(int a,int b)
+{
+    if(a==0) return b;
+      return findgcd(b%a,a);
+
+}
+int main(){
+ int  t;
+ cin>>t;
+for(int i=1;i<=t;i++)
+ {
+    ll A,B,L;
+    cin>>A>>B>>L;
+   
+ ll lcm_AB=(A*B)/__gcd(A,B);
+  //  check lcm(a,b) and L 
+  // if l%lcm(a,b)!=0   solution n nai
+  
+  if(L%lcm_AB!=0) 
+  {
+  cout<<"Case "<<i<<": ";
+    cout<<"impossible"<<endl;
+
+  }
+  else 
+  {
+    ll C =L/lcm_AB;
+    int gcd=findgcd(lcm_AB,C);
+        while(gcd!=1)
+        {
+            C*=gcd;
+            lcm_AB/=gcd;
+            gcd=findgcd(lcm_AB,C);
+        }
+    cout<<"Case "<<i<<": ";
+    cout<<C<<endl;
+
+
+  }
+ }
+}
